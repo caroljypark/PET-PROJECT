@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PetVital - 수의사가 설계한 맞춤 반려동물 영양제. 관절, 피부, 시니어 건강을 위한 프리미엄 솔루션.">
+<title>PetVital | 수의사가 설계한 맞춤 영양</title>
+<style>
+  :root {
+    --orange: #d2480f;
+    --orange-dark: #a83a0c;
+    --orange-light: #ff7a3d;
+    --cream: #fff8f3;
+    --text: #2b1d14;
+    --muted: #7a6a5f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.6;
+  }
+  a { text-decoration: none; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(255,248,243,0.92);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(210,72,15,0.1);
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--orange);
+    letter-spacing: -0.5px;
+  }
+  nav .nav-cta {
+    background: var(--orange);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+    color: white;
+    padding: 100px 24px 120px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    top: -250px;
+    right: -150px;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50%;
+    bottom: -150px;
+    left: -100px;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+    position: relative;
+  }
+  .hero p.slogan {
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 0.95;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: white;
+    color: var(--orange);
+    padding: 16px 36px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover { transform: translateY(-3px); }
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 16px 36px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    border: 2px solid rgba(255,255,255,0.6);
+    transition: background 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.12); }
+
+  /* Section title */
+  .section { padding: 90px 24px; }
+  .section-title {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .section-title .eyebrow {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .section-title h2 {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .section-title p {
+    color: var(--muted);
+    margin-top: 12px;
+    font-size: 16px;
+  }
+
+  /* Products */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .product-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: 0 10px 30px rgba(43,29,20,0.06);
+    border: 1px solid rgba(210,72,15,0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(210,72,15,0.15);
+  }
+  .product-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: white;
+  }
+  .product-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .product-card p {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+  .product-tag {
+    display: inline-block;
+    background: #fdebe1;
+    color: var(--orange-dark);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  /* Testimonials */
+  .testimonials-section { background: #fdebe1; }
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .testimonial-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(43,29,20,0.06);
+  }
+  .stars { color: var(--orange); font-size: 16px; margin-bottom: 14px; }
+  .testimonial-card p.quote {
+    font-size: 16px;
+    margin-bottom: 22px;
+    color: var(--text);
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .author-name { font-weight: 700; font-size: 14px; }
+  .author-pet { color: var(--muted); font-size: 13px; }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(135deg, var(--orange-dark), var(--orange));
+    color: white;
+    text-align: center;
+    padding: 90px 24px;
+  }
+  .cta-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .cta-section p {
+    opacity: 0.92;
+    margin-bottom: 32px;
+    font-size: 16px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 28px 24px;
+    color: var(--muted);
+    font-size: 13px;
+    background: white;
+  }
+
+  @media (max-width: 800px) {
+    .products, .testimonials { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+  }
+
+  /* Accessibility: focus states */
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--orange-dark);
+    outline-offset: 3px;
+  }
+
+  /* Trust bar */
+  .trust-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    background: white;
+    padding: 22px 24px;
+    border-bottom: 1px solid rgba(210,72,15,0.08);
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .trust-item .dot { color: var(--orange); }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Diagnosis modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(43,29,20,0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: white;
+    border-radius: 20px;
+    max-width: 440px;
+    width: 100%;
+    padding: 32px;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--muted);
+    line-height: 1;
+    padding: 4px;
+  }
+  .modal-box h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+  .modal-box .step-label { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px; }
+  .quiz-option {
+    text-align: left;
+    background: var(--cream);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .quiz-option:hover { border-color: var(--orange-light); }
+  .quiz-option.selected { border-color: var(--orange); background: #fdebe1; }
+  .quiz-result { text-align: center; }
+  .quiz-result .product-icon { margin: 0 auto 16px; }
+  .quiz-result h3 { font-size: 22px; }
+  .quiz-result p { color: var(--muted); margin: 10px 0 22px; font-size: 15px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav aria-label="주 메뉴">
+    <div class="logo">🐾 PetVital</div>
+    <button type="button" class="nav-cta" data-open-quiz>지금 시작하기</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero" aria-label="소개">
+  <div class="hero-badge">수의사 직접 설계 · 임상 기반 처방</div>
+  <h1>PetVital</h1>
+  <p class="slogan">수의사가 설계한 맞춤 영양</p>
+  <div class="hero-buttons">
+    <button type="button" class="btn-primary" data-open-quiz>맞춤 영양 진단 받기</button>
+    <a href="#products" class="btn-secondary">제품 둘러보기</a>
+  </div>
+</section>
+
+<div class="trust-bar" aria-label="신뢰 정보">
+  <div class="trust-item"><span class="dot">●</span> 수의사 자문위원 12명 참여</div>
+  <div class="trust-item"><span class="dot">●</span> 동물병원 처방 성분 기준</div>
+  <div class="trust-item"><span class="dot">●</span> 누적 보호자 8,400+ 선택</div>
+</div>
+
+<section class="section" id="products" aria-label="제품 소개">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Our Products</span>
+      <h2>반려동물의 생애 단계에 맞춘 3가지 솔루션</h2>
+      <p>수의사 자문을 거쳐 설계된 프리미엄 영양제로 건강을 지켜주세요</p>
+    </div>
+    <div class="products">
+      <div class="product-card reveal">
+        <div class="product-icon" role="img" aria-label="관절 케어 아이콘">🦴</div>
+        <h3>조인트 케어</h3>
+        <p>관절과 연골 건강을 위한 글루코사민·콘드로이친 복합 처방으로 활동량 많은 반려동물에게 적합합니다.</p>
+        <span class="product-tag">관절 · 활력</span>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-icon" role="img" aria-label="피부 모질 케어 아이콘">🐟</div>
+        <h3>스킨 &amp; 코트</h3>
+        <p>오메가3와 비오틴이 풍부해 피부 트러블을 줄이고 윤기 있는 털을 가꿔주는 맞춤 영양 솔루션입니다.</p>
+        <span class="product-tag">피부 · 모질</span>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-icon" role="img" aria-label="시니어 종합영양 아이콘">🧠</div>
+        <h3>시니어 종합영양</h3>
+        <p>노령 반려동물의 면역력과 인지 기능을 위한 종합 비타민·항산화 성분이 균형 있게 배합되어 있습니다.</p>
+        <span class="product-tag">시니어 · 면역</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section testimonials-section" aria-label="고객 후기">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow">Reviews</span>
+      <h2>먼저 경험한 보호자들의 이야기</h2>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial-card reveal">
+        <div class="stars" aria-label="5점 만점에 5점">★★★★★</div>
+        <p class="quote">"관절 영양제를 먹인 지 한 달 만에 산책할 때 다리를 끄는 게 줄었어요. 수의사 선생님도 변화가 보인다고 하셨어요."</p>
+        <div class="testimonial-author">
+          <div class="avatar" aria-hidden="true">민</div>
+          <div>
+            <div class="author-name">김민서 보호자</div>
+            <div class="author-pet">반려견 '보리' (8세, 골든리트리버)</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars" aria-label="5점 만점에 5점">★★★★★</div>
+        <p class="quote">"털 빠짐이 심했던 아이가 스킨앤코트 먹은 후로 털이 훨씬 부드러워지고 윤기가 났어요. 성분표도 투명하게 공개돼서 믿고 먹일 수 있었어요."</p>
+        <div class="testimonial-author">
+          <div class="avatar" aria-hidden="true">지</div>
+          <div>
+            <div class="author-name">이지훈 보호자</div>
+            <div class="author-pet">반려묘 '두부' (3세, 러시안블루)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="cta" aria-label="맞춤 진단 시작">
+  <h2>지금, 우리 아이에게 맞는 영양을 찾아보세요</h2>
+  <p>1분 진단으로 PetVital 수의사 팀이 맞춤 영양 플랜을 제안해드립니다</p>
+  <button type="button" class="btn-primary" data-open-quiz>무료 맞춤 진단 시작하기</button>
+</section>
+</main>
+
+<div class="modal-overlay" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
+  <div class="modal-box">
+    <button type="button" class="modal-close" id="quizClose" aria-label="닫기">✕</button>
+    <div id="quizBody"></div>
+  </div>
+</div>
+
+<footer>
+  © 2026 PetVital. 수의사가 설계한 맞춤 영양.
+</footer>
+
+<script>
+  // 스크롤 시 reveal 애니메이션
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach((el) => observer.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('visible'));
+  }
+
+  // 1분 맞춤 진단 퀴즈
+  const QUIZ_STEPS = [
+    {
+      question: '반려동물의 종류는 무엇인가요?',
+      options: ['강아지', '고양이']
+    },
+    {
+      question: '가장 신경 쓰이는 부분은 무엇인가요?',
+      options: ['관절 · 활동량', '피부 · 털 윤기', '노화 · 면역']
+    }
+  ];
+  const PRODUCT_RESULT = {
+    '관절 · 활동량': { icon: '🦴', name: '조인트 케어', desc: '관절과 연골 건강을 위한 글루코사민·콘드로이친 복합 처방을 추천드려요.' },
+    '피부 · 털 윤기': { icon: '🐟', name: '스킨 & 코트', desc: '오메가3와 비오틴이 풍부한 피부·모질 개선 솔루션을 추천드려요.' },
+    '노화 · 면역': { icon: '🧠', name: '시니어 종합영양', desc: '면역력과 인지 기능을 위한 종합 비타민·항산화 영양제를 추천드려요.' }
+  };
+
+  const modal = document.getElementById('quizModal');
+  const quizBody = document.getElementById('quizBody');
+  const quizClose = document.getElementById('quizClose');
+  let quizStep = 0;
+
+  function renderQuizStep() {
+    const step = QUIZ_STEPS[quizStep];
+    quizBody.innerHTML = `
+      <span class="step-label">${quizStep + 1} / ${QUIZ_STEPS.length}단계</span>
+      <h3 id="quizTitle">${step.question}</h3>
+      <div class="quiz-options">
+        ${step.options.map((opt) => `<button type="button" class="quiz-option" data-option="${opt}">${opt}</button>`).join('')}
+      </div>
+    `;
+    quizBody.querySelectorAll('.quiz-option').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        quizStep++;
+        if (quizStep < QUIZ_STEPS.length) {
+          renderQuizStep();
+        } else {
+          renderQuizResult(btn.dataset.option);
+        }
+      });
+    });
+  }
+
+  function renderQuizResult(concern) {
+    const result = PRODUCT_RESULT[concern] || PRODUCT_RESULT['노화 · 면역'];
+    quizBody.innerHTML = `
+      <div class="quiz-result">
+        <div class="product-icon" role="img" aria-label="${result.name} 아이콘">${result.icon}</div>
+        <h3 id="quizTitle">추천 제품: ${result.name}</h3>
+        <p>${result.desc}</p>
+        <button type="button" class="btn-primary" id="quizRestart">다시 진단하기</button>
+      </div>
+    `;
+    document.getElementById('quizRestart').addEventListener('click', openQuiz);
+  }
+
+  function openQuiz() {
+    quizStep = 0;
+    renderQuizStep();
+    modal.classList.add('open');
+    quizClose.focus();
+  }
+
+  function closeQuiz() {
+    modal.classList.remove('open');
+  }
+
+  document.querySelectorAll('[data-open-quiz]').forEach((btn) => {
+    btn.addEventListener('click', openQuiz);
+  });
+  quizClose.addEventListener('click', closeQuiz);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeQuiz();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeQuiz();
+  });
+</script>
+
+</body>
+</html>
